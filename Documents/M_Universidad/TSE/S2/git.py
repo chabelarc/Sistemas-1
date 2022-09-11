@@ -1,0 +1,7 @@
+print("Segundo commit")
+print("Tercer commit")
+print("Cuarto commit")
+print("Trabajando en dev")
+print("segundo commit de dev")
+print("Push a la rama principal")
+print("Cambio hecho en git hub")
