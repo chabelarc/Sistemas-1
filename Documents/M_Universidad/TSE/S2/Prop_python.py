@@ -103,6 +103,56 @@ df = pd.DataFrame ({'num_legs': [2, 4, np.nan, 0],
 df #Muestra el dataframe
 print(df)
 
+#Otro ejemplo de dataframe, usando arreglo numpy con índice datetime y etiquetado
+df1 = pd.date_range ('20220911', periods = 6)
+df1 = pd.DataFrame(np.random.randn(6,4),index=df1, columns = list ('ABCD'))
+df1 #Muestra el dataframe
+print(df1)
+
+#Ver datos -------
+
+df1.head(2) #Ver los datos de arriba
+df1.tail(2) #Ver los datos de abajo
+df1.index #Mostrar el índice de la columna
+df1.dtypes #Inspeccionar los tipos de datos
+df1.describe() #Mostrar una rápida estadística de los datos
+
+print(df1.describe())
+
+#Datos faltantes ---------
+
+df.dropna(how='any') # Quita cualquier fila con información faltante
+df.dropna(how='any') # Quita cualquier columna con información faltante
+df.fillna (value=5) # Llena los datos faltantes con 5
+pd.isna(df) # Para tener una máscara booleana donde los datos faltan
+
+print(pd.isna(df))
+
+#Manejo de archivos -----------
+
+df.to_csv('foo.csv') #Escribe un documento CSV
+pd.read_csv('foo.csv') #Lee de un documento CSV
+df.to_excel('foo.xlsx', sheet_name='Sheet1') #Lo escribe en un documento excel
+pd.read_excel('foo.xlsx','Sheet1',index_col=None,na_values=['NA']) #Lee de un documento excel
+
+#Graficar
+
+# pip3 install matplotlib #Installar matplotlib usando pip
+
+from matplotlib import pyplot as plt #Importar Matplotlib modulo
+
+ts = pd.Series(np.random.rand(1000),index=pd.date_range('1/1/2022', periods=1000))
+ts.head()
+ts = ts.cumsum()
+ts.plot() #Graficar
+plt.show()
+
+#En un dataframe, el método de graficación es conveniente para graficar todas las columnas con etiquetas.
+df4= pd.DataFrame(np.random.randn(1000,4),index=ts.index,columns=['A','B','C','D'])
+df4 = df4.cumsum()
+df4.head()
+df4.plot()
+plt.show()
 
 
 
